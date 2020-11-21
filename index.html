@@ -4,6 +4,8 @@
     <title>Calculadora</title>
     <meta charset="utf-8">
     <link href="css.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,12 +18,12 @@
 
                     <tr>
                         <td colspan="4">
-                            <div class="display">
+                            <div class="display display-text">
                                 <div class="icon-display">
                                     <img src="C:\Users\adm-hugo\Documents\Calculadora\imagens\SVG\matematicas.svg">
                                 </div>
                                 <div class="display-input">
-                                    <input type="text" id="User" nome="Nome">
+                                    <input type="text" id="User" nome="display" value="0" disabled='true'>
                                 </div>
                         </td>
             </div>
@@ -92,6 +94,10 @@
 
             <div class="history-list">
                 <h2>Histórico</h2>
+                <content id="content">
+
+
+                </content>
             </div>
 
         </div>
