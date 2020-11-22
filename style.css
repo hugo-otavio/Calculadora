@@ -9,12 +9,12 @@ body{
     
 
 }
-.conteiner{
-    display:flex;
-    background-color:#f1f3f4;
+.container{
+    display:flex;    
+    Padding:40px 
 }
 .display{
-    border: solid 1px #ebebeb;  
+    border: solid 2px #ebebeb;  
     border-radius: 5px;
     min-height: 100px;
     position: relative;
@@ -53,11 +53,11 @@ body{
  }
 
 .key { 
-    width: 100px;
+    width: 100%;
     background-color: #dadce0;
     border-radius: 5px;    
     margin:10px;
-    padding: 40px;    
+    padding: 40px 0px;    
 }
 .key:hover{
     background-color: #ffffff;  
@@ -67,14 +67,18 @@ body{
 }
 
 h1,h2{
-    font-weight:200
+    font-weight:500
 }
 
 .history-list {
-    border: solid 1px #ebebeb;
+    border: solid 2px #ebebeb;
     width: 300px;
-    text-align: center;
+    padding-left:10;    
+    min-height:200px;
 
+}
+.ul-history{       
+    font-size:18;
 }
 
 @media (max-width: 1100px) {

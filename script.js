@@ -17,17 +17,17 @@ const math = (f, s, o) => {
     switch (o) {
         case '+':
             console.log('soma')
-            result = s + f 
-            return result           
+            result = s + f
+            return result
             break
         case '-':
             console.log('Subtração')
             result = f - s
             return result
             break
-        case 'x':            
+        case 'x':
             result = f * s
-            console.log('Multiplicação',f,s,o,result)
+            console.log('Multiplicação', f, s, o, result)
             return result
             break
         case '/':
@@ -37,9 +37,13 @@ const math = (f, s, o) => {
             break
         default: console.log('error switch case')
             break;
-
     }
+}
 
+const reset = () => {
+    result = updisplay.value = first = second = operator = ''
+    history1 = []
+    ctrl = false
 }
 
 document.querySelectorAll('[number]').forEach(e => {
@@ -52,7 +56,7 @@ document.querySelectorAll('[number]').forEach(e => {
         } else {
             second += e.getAttribute('value')
             display.value = second
-            
+
         }
     }
 })
@@ -60,17 +64,22 @@ document.querySelectorAll('[number]').forEach(e => {
 
 document.querySelectorAll('[operator]').forEach(e => {
     e.onclick = click => {
-        if (ctrl == false) {
+        if (ctrl == false && first != '') {
             operator = e.getAttribute('value')
             history1 = [first, operator]
             display.value = 0
-            updisplay.value = history1.join(' ')            
+            updisplay.value = history1.join(' ')
             ctrl = true
 
         } else if (ctrl == true) {
-            history1.push(second, operator)
-            updisplay.value = history1.join(' ')
-
+            result = math(first, second, operator)
+            display.value = result
+            history1.push(second)
+            operator = e.getAttribute('value')
+            history1.push(operator)
+            updisplay.value = history1.join(' ')            
+            second = ''
+            first = result
         }
 
     }
@@ -78,13 +87,16 @@ document.querySelectorAll('[operator]').forEach(e => {
 
 document.querySelectorAll('[result]').forEach(e => {
     e.onclick = click => {
-        result = math(first,second,operator)        
-       history1.push(second)       
-       updisplay.value = history1.join(' ')
-       display.value = result
-       second = result
-       history2 = updisplay.value.concat(' = ', result)
-       document.getElementById('content').innerHTML += history2
+        if(second != ''){
+        result = math(first, second, operator)
+        history1.push(second)
+        updisplay.value = history1.join(' ')
+        display.value = result
+        second = result
+        history2 = updisplay.value.concat(' = ', result)
+        document.querySelector('.ul-history').innerHTML += `<li>${history2}</li>`
+        reset()
+    }
     }
 })
 
