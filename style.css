@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/Oswald-Regular.ttf') format('truetype');
+}
 
 body{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    background-color: #0D262D;
+    color:#ffffff
 }
+
 .edge{
     display: flex;
-    justify-content: center;
+    justify-content: center;    
     margin:0 auto;
     
 
@@ -13,35 +20,51 @@ body{
     display:flex;    
     Padding:40px 
 }
-.display{
-    border: solid 2px #ebebeb;  
+
+
+.align{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-right: 10px;
+}
+
+.display, .key, .history-list{
+    margin: 0px 0px 10px 5px;
+    border: solid 5px #ffffff;
     border-radius: 5px;
+
+}
+.display{         
     min-height: 100px;
-    position: relative;
-    display:block;  
- 
-}
-
-.display-input1, .display-input2{
-    display: flex;  
-    justify-content: flex-end;  
-    margin-right:20px;   
-    padding: 10px 0;
-}
-
-.display-input1 input, .display-input2 input, input:active {
-    border:none;
-    background-color:transparent;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px
 }
 
 .display-text1 input {
-    font-size: 20px;
-    text-align: right;
+    font-size: 20;
 }
 
 .display-text2 input {
-    font-size: 40px;
+    font-size: 40;
+}
+
+
+
+input{    
+    background-color: transparent;
+    border: none;
+    color:#ffffff;
     text-align: right;
+    width: 100%;    
+}
+
+
+.keys-lines{
+    display:flex;
 }
 
 .key-text {
@@ -49,36 +72,38 @@ body{
     justify-content: center;
     margin:10px; 
     font-size:30px; 
-    font-weight: 200;
+    font-weight: 200;    
  }
+
 
 .key { 
     width: 100%;
-    background-color: #dadce0;
-    border-radius: 5px;    
-    margin:10px;
-    padding: 40px 0px;    
+    background-color: #b1820f;            
+    padding: 20px 0px;    
 }
 .key:hover{
-    background-color: #ffffff;  
+    background-color: #e2b22a;  
 }
 .key:active{
     background-color: #bce2c8
 }
 
-h1,h2{
-    font-weight:500
-}
-
-.history-list {
-    border: solid 2px #ebebeb;
-    width: 300px;
-    padding-left:10;    
+.history-list {    
+    width: 250px;       
     min-height:200px;
-
+    padding:10px
 }
-.ul-history{       
-    font-size:18;
+
+#content{
+    margin-top:5px;
+    text-align: right;
+}
+
+.history-title {
+    text-align: center;
+    font-size:2 0;
+    font-weight: 300;
+    
 }
 
 @media (max-width: 1100px) {

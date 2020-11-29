@@ -94,7 +94,7 @@ document.querySelectorAll('[result]').forEach(e => {
         display.value = result
         second = result
         history2 = updisplay.value.concat(' = ', result)
-        document.querySelector('.ul-history').innerHTML += `<li>${history2}</li>`
+        document.querySelector('#content').innerHTML += `<p>${history2}</p>`
         reset()
     }
     }
