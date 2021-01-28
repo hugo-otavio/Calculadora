@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Oswald';
-    src: url('fonts/Oswald-Regular.ttf') format('truetype');
+    src: url('./../fonts/Oswald-Regular.ttf') format('truetype');
 }
 
 body{
@@ -20,25 +20,17 @@ body{
     display:flex;    
     Padding:40px 
 }
-
-
-.align{
-    display: flex;
-    flex-direction: column;
+.align{    
     width: 400px;    
 }
-
 .painel{
     display:flex;
     align-items: center;    
     padding: 10px 10px 10px 20px;
 }
-
-
-
 .painel, .key, .history-list{
     margin: 0px 0px 10px 5px;
-    border: solid 5px #ffffff;
+    border: solid 1px #ffffff;
     border-radius: 5px;
 
 }
@@ -76,8 +68,7 @@ input{
     display:flex;
     justify-content: center;
     margin:10px; 
-    font-size:30px; 
-    font-weight: 200;    
+    font-size:30px;         
  }
 
 
