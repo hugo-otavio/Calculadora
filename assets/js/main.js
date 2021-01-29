@@ -24,26 +24,20 @@ const math = (a, b, o) => {
 }
 
 
-const printScreen = printValue => {
-    let historyMath = [termA, operation, termB]
-    switch (printValue) {
-        case 'termA':
-            display.value = termA
-            break
-        case 'termB':
-            display.value = termB
-            break
-        case 'operation':
-            display.value = 0
-            updisplay.value = historyMath.join(' ')
-            break
-        case 'result':
-            display.value = result
-            updisplay.value = historyMath.join(' ').concat(' = ', result)
-            document.getElementById('content').innerHTML += `<p>${updisplay.value}<p>`
-            termA = result
-            result = termB = operation = ''
-            keyBlocker = false
+const printScreen = {        
+    termAPrt(){display.value = termA},
+    termBPrt(){display.value = termB},
+    operationPrt() {
+        display.value = 0        
+        updisplay.value = [termA, operation, termB].join(' ')
+    },
+    resultPrt() {
+        display.value = result
+        updisplay.value = [termA, operation, termB].join(' ').concat(' = ', result)
+        document.getElementById('content').innerHTML += `<p>${updisplay.value}<p>`
+        termA = result
+        result = termB = operation = ''
+        keyBlocker = false
     }
 }
 
@@ -51,11 +45,11 @@ const printScreen = printValue => {
 const keyNumberEvent = key => {
     if (operation == '') {
         termA += key
-        printScreen('termA')
+        printScreen.termAPrt()
 
     } else {
         termB += key
-        printScreen('termB')
+        printScreen.termBPrt()
     }
 }
 
@@ -63,7 +57,7 @@ const keyNumberEvent = key => {
 const keyOperationEvent = key => {
     if (keyBlocker == false && termA != '') {
         operation = key
-        printScreen('operation')
+        printScreen.operationPrt()
         keyBlocker = true
     }
 }
@@ -72,7 +66,7 @@ const keyOperationEvent = key => {
 const keyResultEvent = () => {
     if (termB != '') {
         result = math(termA, termB, operation)
-        printScreen('result')
+        printScreen.resultPrt()
 
     }
 }
