@@ -6,7 +6,25 @@ let keyBlocker = false
 
 
 
-const printScreen = printValue => {  
+const math = (a, b, o) => {
+    a = parseFloat(a)
+    b = parseFloat(b)
+    switch (o) {
+        case '+':
+            return b + a
+        case '-':
+            return a - b
+        case 'x':
+        case '*':
+            return a * b
+        case '/':
+            return a / b
+        default: console.log('erro função math')
+    }
+}
+
+
+const printScreen = printValue => {
     let historyMath = [termA, operation, termB]
     switch (printValue) {
         case 'termA':
@@ -30,10 +48,7 @@ const printScreen = printValue => {
 }
 
 
-
-
-
-const eventKeyNumber = key => {
+const keyNumberEvent = key => {
     if (operation == '') {
         termA += key
         printScreen('termA')
@@ -45,9 +60,7 @@ const eventKeyNumber = key => {
 }
 
 
-
-
-const eventKeyOperation = key => {
+const keyOperationEvent = key => {
     if (keyBlocker == false && termA != '') {
         operation = key
         printScreen('operation')
@@ -56,10 +69,7 @@ const eventKeyOperation = key => {
 }
 
 
-
-
-
-const eventKeyResult = () => {
+const keyResultEvent = () => {
     if (termB != '') {
         result = math(termA, termB, operation)
         printScreen('result')
@@ -68,54 +78,28 @@ const eventKeyResult = () => {
 }
 
 
-
-
-
-const math = (a, b, o) => {    
-    a = parseFloat(a)
-    b = parseFloat(b)
-    switch (o) {
-        case '+':
-            result = b + a
-            return result
-        case '-':
-            result = a - b
-            return result
-        case 'x':
-        case '*':
-            result = a * b
-            return result
-        case '/':
-            result = a / b
-            return result
-        default: console.log('error switch case')
-    }
-}
-
-
-
-
-
 const reset = () => {
-    termA = termB = operation = updisplay.value = ""    
+    termA = termB = operation = updisplay.value = ""
     display.value = 0
     keyBlocker = false
 }
 
-
-
-
-const keyboardEvent = e => {
-    const keyNumber = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    const keyOperation = ['+', '-', '*', '/', 'x']
-    const keyText = e.key
-    if (keyNumber.indexOf(keyText) != -1) {
-        eventKeyNumber(keyText)
+const keyBoardCheck = e => {
+    const typedKey = e.key
+    const characterList = {
+        number: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        operation: ['+', '-', '*', '/', 'x']
     }
-    if (keyOperation.indexOf(keyText) != -1) {
-        eventKeyOperation(keyText)
+    if (characterList.number.indexOf(typedKey) != -1) {
+        keyNumberEvent(typedKey)
+    }
+    if (characterList.operation.indexOf(typedKey) != -1) {
+        keyOperationEvent(typedKey)
     }
 }
+
+
+
 
 
 
@@ -123,26 +107,26 @@ const keyboardEvent = e => {
 
 document.addEventListener('keydown', e => {
     const code = e.keyCode
-    code == 13 ? eventKeyResult(e.key) : keyboardEvent(e)
+    code == 13 ? keyResultEvent(e.key) : keyBoardCheck(e)
 })
 
 
 document.querySelectorAll('[number]').forEach(e => {
     e.onclick = click => {
-        eventKeyNumber(e.innerText)
+        keyNumberEvent(e.innerText)
     }
 })
 
 
 document.querySelectorAll('[operator]').forEach(e => {
     e.onclick = click => {
-        eventKeyOperation(e.innerText)
+        keyOperationEvent(e.innerText)
     }
 })
 
 document.querySelectorAll('[result]').forEach(e => {
     e.onclick = click => {
-        eventKeyResult()
+        keyResultEvent()
     }
 })
 
